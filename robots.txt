@@ -1,8 +1,8 @@
 User-agent: *
 Allow: /
 
-# Sitemap (reemplaza con tu dominio real cuando hagas deploy)
-Sitemap: https://tu-dominio.com/sitemap.xml
+# Sitemap
+Sitemap: https://portafolio-jesusojeda.netlify.app/sitemap.xml
 
 # Archivos que no queremos indexar
 Disallow: /node_modules/

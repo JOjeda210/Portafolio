@@ -4,6 +4,8 @@
 
 Portafolio profesional de Jesús Ojeda, desarrollador especializado en backend con experiencia en tecnologías modernas.
 
+**🌐 Ver en vivo:** [https://portafolio-jesusojeda.netlify.app/](https://portafolio-jesusojeda.netlify.app/)
+
 ### 🛠️ Tecnologías utilizadas
 
 **Frontend:**
