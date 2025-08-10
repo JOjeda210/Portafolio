@@ -1,0 +1,21 @@
+{
+  "name": "Jesús Ojeda - Portafolio",
+  "short_name": "Portafolio JO",
+  "description": "Portafolio profesional de Jesús Ojeda, desarrollador full stack",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ECEFF1",
+  "theme_color": "#4A6572",
+  "icons": [
+    {
+      "src": "portafolio.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "Img/perfil.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    }
+  ]
+}
