@@ -431,7 +431,7 @@ h2::after {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Tarjetas un poco más anchas */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 40px;
     margin-top: 45px;
 }
@@ -797,6 +797,30 @@ h2::after {
         gap: 30px;
     }
 
+    /* GitHub CTA responsive */
+    .github-cta {
+        margin-top: 40px;
+        padding: 35px 25px;
+    }
+
+    .github-text {
+        font-size: 1.3em;
+        margin-bottom: 20px;
+    }
+
+    .github-link {
+        padding: 15px 25px;
+        font-size: 1em;
+        gap: 12px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .github-link i {
+        font-size: 1.6em;
+        margin-bottom: 5px;
+    }
+
     .about-content .text-content h2 {
         text-align: center;
     }
@@ -863,6 +887,27 @@ h2::after {
         min-width: 120px;
     }
 
+    /* GitHub CTA para móviles pequeños */
+    .github-cta {
+        padding: 30px 20px;
+        margin-top: 30px;
+    }
+
+    .github-text {
+        font-size: 1.1em;
+        line-height: 1.3;
+    }
+
+    .github-link {
+        padding: 12px 20px;
+        font-size: 0.9em;
+        border-radius: 40px;
+    }
+
+    .github-link i {
+        font-size: 1.4em;
+    }
+
     .project-links {
         flex-direction: column;
         gap: 8px;
@@ -915,48 +960,21 @@ h2::after {
 /* GitHub Call-to-Action */
 .github-cta {
     text-align: center;
-    margin-top: 40px;
-    padding: 30px;
-    background-color: var(--card-background);
+    margin-top: 60px;
+    padding: 50px 40px;
+    background: linear-gradient(135deg, var(--card-background) 0%, rgba(249, 170, 51, 0.05) 100%);
     border: 2px solid var(--border-color);
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(74, 101, 114, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(74, 101, 114, 0.1);
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.github-cta:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(74, 101, 114, 0.25);
-    border-color: var(--secondary-color);
-}
-
-.github-cta::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(249, 170, 51, 0.1),
-        transparent
-    );
-    transition: left 0.5s ease;
-}
-
-.github-cta:hover::before {
-    left: 100%;
 }
 
 .github-text {
     color: var(--text-color);
-    font-size: 1.3em;
-    font-weight: 600;
-    margin-bottom: 15px;
+    font-size: 1.6em;
+    font-weight: 700;
+    margin-bottom: 25px;
     position: relative;
     z-index: 2;
 }
@@ -964,36 +982,63 @@ h2::after {
 .github-link {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    background-color: var(--primary-color);
+    gap: 15px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #5a7a8a 100%);
     color: var(--white-color);
     text-decoration: none;
-    padding: 12px 25px;
-    border-radius: 25px;
-    font-weight: 600;
-    font-size: 1.1em;
-    transition: all 0.3s ease;
+    padding: 18px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.15em;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     z-index: 2;
-    box-shadow: 0 4px 15px rgba(74, 101, 114, 0.3);
-    border: 2px solid var(--primary-color);
+    box-shadow: 
+        0 8px 25px rgba(74, 101, 114, 0.3),
+        0 3px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    overflow: hidden;
+}
+
+.github-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #f7b955 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 48px;
 }
 
 .github-link:hover {
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
-    color: var(--text-color);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(249, 170, 51, 0.4);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 15px 35px rgba(74, 101, 114, 0.4),
+        0 8px 20px rgba(249, 170, 51, 0.3);
+}
+
+.github-link:hover::before {
+    opacity: 1;
 }
 
 .github-link i {
-    font-size: 1.3em;
-    transition: transform 0.3s ease;
+    font-size: 1.4em;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 1;
 }
 
 .github-link:hover i {
-    transform: scale(1.1) rotate(15deg);
+    transform: scale(1.2) rotate(360deg);
+}
+
+.github-link span {
+    position: relative;
+    z-index: 1;
 }
 
 /* Botón de menú hamburguesa (JS lo manejará)  */
