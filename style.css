@@ -996,7 +996,7 @@ h2::after {
     transform: scale(1.1) rotate(15deg);
 }
 
-/* Botón de menú hamburguesa (JS lo manejará) - Agrega esto al HTML si lo necesitas */
+/* Botón de menú hamburguesa (JS lo manejará)  */
 .menu-toggle {
     display: none; 
     font-size: 2em;
