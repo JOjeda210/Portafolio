@@ -59,6 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const currentNavLink = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
                 if (currentNavLink) {
                     currentNavLink.classList.add('active');
+                    
+                    // Google Analytics: Track section views
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'section_view', {
+                            'section_name': entry.target.id,
+                            'event_category': 'navigation'
+                        });
+                    }
                 }
             }
         });
@@ -136,6 +144,51 @@ document.addEventListener('DOMContentLoaded', () => {
     projectLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.stopPropagation(); // Prevenir interferencias de otros eventos
+            
+            // Google Analytics: Track project clicks
+            if (typeof gtag !== 'undefined') {
+                const projectName = link.closest('.project-card').querySelector('h3').textContent;
+                const linkType = link.classList.contains('btn-secondary') ? 'GitHub' : 'Live Demo';
+                
+                gtag('event', 'project_click', {
+                    'project_name': projectName,
+                    'link_type': linkType,
+                    'event_category': 'engagement'
+                });
+            }
+        });
+    });
+
+    // Track social media clicks
+    const socialLinks = document.querySelectorAll('.social-links a, .github-link');
+    socialLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (typeof gtag !== 'undefined') {
+                const platform = link.href.includes('github') ? 'GitHub' : 
+                               link.href.includes('linkedin') ? 'LinkedIn' : 'Social';
+                
+                gtag('event', 'social_click', {
+                    'social_platform': platform,
+                    'event_category': 'social_engagement'
+                });
+            }
+        });
+    });
+
+    // Track contact clicks
+    const contactLinks = document.querySelectorAll('.contact-item a');
+    contactLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (typeof gtag !== 'undefined') {
+                const contactType = link.href.includes('mailto') ? 'Email' :
+                                  link.href.includes('linkedin') ? 'LinkedIn' :
+                                  link.href.includes('github') ? 'GitHub' : 'Contact';
+                
+                gtag('event', 'contact_click', {
+                    'contact_method': contactType,
+                    'event_category': 'contact'
+                });
+            }
         });
     });
 
